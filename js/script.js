@@ -18,8 +18,29 @@ let bombArray = [];
 //Array numeri scelti dall'utente
 let userArray = [];
 
-const max = 20;
-const min = 1;
+//Scelta difficoltà 
+let levelChoice;
+let min;
+let max;
+
+do {levelChoice = parseInt(prompt("Inserisci livello: 0, 1 o 2", "2"))}
+while (isNaN(levelChoice) || levelChoice < 0 || levelChoice > 2);
+
+switch (levelChoice) {
+    case 0:
+    min = 1;
+    max = 100;
+    break;
+
+    case 1:
+    min = 1;
+    max = 80;
+    break;
+
+    case 2:
+    min = 1;
+    max = 50;
+} 
 
 //Randomizzare 16 numeri
 while (bombArray.length < 16) {
