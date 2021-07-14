@@ -17,3 +17,9 @@ let bombArray = [];
 
 //Array numeri scelti dall'utente
 let userArray = [];
+
+//Funzione che randomizza numero 
+function bombRandom (numMax, numMin) {
+    return Math.floor(Math.random() * (numMax - numMin + 1)) + numMin;
+}
+console.log(bombRandom(100, 1));
