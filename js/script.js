@@ -18,8 +18,28 @@ let bombArray = [];
 //Array numeri scelti dall'utente
 let userArray = [];
 
+//Randomizzare 16 numeri
+while (bombArray.length < 16) {
+    let random = bombRandom(100, 1);
+    if (!isListed(random, bombArray)) {
+        insert(random, bombArray);
+    }
+}
+console.table(bombArray);
+
 //Funzione che randomizza numero 
 function bombRandom (numMax, numMin) {
     return Math.floor(Math.random() * (numMax - numMin + 1)) + numMin;
 }
-console.log(bombRandom(100, 1));
+
+//Funzione che controlla la presenza di un elemento in un array 
+function isListed(num, numArray){
+    if (numArray.includes(num)){
+       return isListed;
+    } 
+}
+
+//Funzione che inserisce elemento in un array
+ function insert (num, numArray) {
+     return numArray.push(num);   
+ }
