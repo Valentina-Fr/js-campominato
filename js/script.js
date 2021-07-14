@@ -54,7 +54,7 @@ console.table(bombArray);
 //Scelta numeri utente
 let userNumber;
 
-while (max - bombArray.length !== userArray.length && !isListed(userNumber, bombArray)) {
+while ((max - bombArray.length) !== userArray.length && !isListed(userNumber, bombArray)) {
     do {userNumber = parseInt(prompt("Scegli un numero da " + min + " a " + max))}
     while (isNaN(userNumber) || userNumber < min || userNumber > max);
     if(isListed(userNumber, bombArray)) {
@@ -76,12 +76,14 @@ function bombRandom (numMax, numMin) {
 
 //Funzione che controlla la presenza di un elemento in un array 
 function isListed(num, numArray){
+    let isListed = false;
     if (numArray.includes(num)){
-       return isListed;
+        isListed = true;
     } 
+    return isListed
 }
 
 //Funzione che inserisce elemento in un array
 function insert (num, numArray) {
-    return numArray.push(num);   
+    numArray.push(num);   
 }
