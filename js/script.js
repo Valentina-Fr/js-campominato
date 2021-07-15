@@ -6,7 +6,7 @@
 
 //5 chiedere al giocatare numero da 1 a 100
 //6 verificare se è presente nell'array bombe, se si termina partita
-//7 verificare se è presente nell'array utetente ed aggiungere. Se è presente richiedere numero.
+//7 verificare se è presente nell'array utente ed aggiungere. Se è presente richiedere numero.
 //8 continuare a chiedere per 100 - 16 volte
 
 //9 a termine partita stampare messaggio e punteggio
@@ -53,21 +53,29 @@ console.table(bombArray);
 
 //Scelta numeri utente
 let userNumber;
+let userLost = false;
 
-while ((max - bombArray.length) !== userArray.length && !isListed(userNumber, bombArray)) {
+while ((max - bombArray.length) !== userArray.length && !userLost) {
     do {userNumber = parseInt(prompt("Scegli un numero da " + min + " a " + max))}
     while (isNaN(userNumber) || userNumber < min || userNumber > max);
     if(isListed(userNumber, bombArray)) {
-        alert ("Hai perso, il tuo totale punti è: " + userArray.length);
+       userLost = true;
     } else if (!isListed(userNumber, userArray)) {
         insert(userNumber, userArray); 
-    } 
-    if (max - bombArray.length === userArray.length) {
-        alert ("Hai vinto, il tuo totale punti è " + userArray.length);
+        if((max - bombArray.length) !== userArray.length) {
+            alert("Il tuo punteggio provvisorio è " + userArray.length);
+        }
     } 
 }
-
 console.table(userArray); 
+
+if (userLost) {
+    alert ("Hai perso, il tuo punteggio totale è: " + userArray.length); 
+} else {
+    alert ("Hai vinto, il tuo punteggio totale è: " + userArray.length);
+}
+
+//**************** Elenco funzioni
 
 //Funzione che randomizza numero 
 function bombRandom (numMax, numMin) {
